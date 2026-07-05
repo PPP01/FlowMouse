@@ -1,4 +1,7 @@
-importScripts('menu-patterns.js');
+// Chrome loads the service worker as a single file and pulls this in via
+// importScripts. Firefox has no importScripts in a background script — there
+// menu-patterns.js is listed in manifest background.scripts and loaded first.
+if (typeof importScripts === 'function') importScripts('menu-patterns.js');
 
 const isEdge = navigator.userAgent.includes('Edg/') || navigator.userAgent.includes('EdgA/');
 
